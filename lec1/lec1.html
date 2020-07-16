@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
+    </head>
+    <body>
+        <div id='root'></div>
+        <script type='text/babel'>
+            const e = React.createElement;
+
+            class LikeButton extends React.Component{
+                constructor(props){
+                    super(props);
+                    this.state = {
+                        liked: false,
+                    }
+                }
+                //좋아요 버튼 어떻게 화면에 표시할지 정하는 메소드
+                render(){
+                    // return e( //<button>Like</button>를 만들겠다
+                    //     'button',//태그
+                    //     {onClick: () => {this.setState({liked : true})}, type:'submit' },//상태
+                    //     this.state.liked === true ? 'Liked' : 'Like',//보여주는 부분
+                    // );
+
+                    return <button type='submit' onClick = {() => { this.setState({liked: true})}}>
+                        {this.state.liked ? 'Liked' : 'Like'}
+                    </button>;
+                    //JSX (JS + XML)
+                }
+            }
+        </script>
+        <script type='text/babel'>
+            //화면에 반영하는것
+            //위에서 만든 like버튼을 #root에 그린다.
+            ReactDOM.render(<LikeButton/> , document.querySelector('#root'));
+        </script>
+    </body>
+</html>

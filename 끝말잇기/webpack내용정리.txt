@@ -1,0 +1,16 @@
+jsx 랑 함수는 같은곳에 작성할수 없다.
+
+DOM ==> X
+
+.gitignore ==>깃에 올릴때 제외할 파일 설정
+폴더이름/
+파일이름/
+
+개발 환경과 배포환경은 다르다. 그래서 dependencies, devDependencies를 나눠놓는다.
+@babel/core": "^7.10.4",                                       ==>기본설정
+"@babel/plugin-proposal-class-properties": "^7.10.4", ==> X
+"@babel/preset-env": "^7.10.4",                             ==> 바벨이 컴퓨터 환경에 맞게 최신에서 옛날 문법으로 변경해줌
+"@babel/preset-react": "^7.10.4",                            ==> jsx문법 지원
+"babel-loader": "^8.1.0",                                       ==> 바벨과 웹팩 연결
+"webpack": "^4.43.0",                                           ==> 
+"webpack-cli": "^3.3.12"                                       ==>

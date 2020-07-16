@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>구구단</title>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
+    </head>
+    <body>
+        <div id='root'></div>
+        <script type='text/babel'>
+            class GuGuDan extends React.Component{
+                constructor(props){
+                    super(props);
+                    this.state = {//변하는 부분 ==> 중요
+                        first: Math.ceil(Math.random()*9),
+                        second: Math.ceil(Math.random()*9),
+                        value: '',
+                        result: '',
+                    }
+                }
+
+                onSubmit = (e) =>{ //여기서 function 사용하면 this 가 달라지기 때문에 못씀
+                    e.preventDefault();
+                    if(parseInt(this.state.value) === this.state.first * this.state.second){
+                        this.setState((prevState) => { //prevState에는 이전 상태
+                            return {
+                                result: prevState.value + ' = 정답!!',
+                                first: Math.ceil(Math.random()*9),
+                                second: Math.ceil(Math.random()*9),
+                                value: '',
+                            };
+                        });
+                        this.onRefInput.focus(); //아래에서 onRefInput을 선언해 놓아서 사용가능
+                    }else{
+                        this.setState({
+                            result: this.state.value + ' = 땡!!',
+                            value: '',
+                        });
+                        this.onRefInput.focus();
+                    }
+                }
+                //
+                onChange = (e) =>{ this.setState({value: e.target.value}) };
+                onRefInput = (c) => {this.input = c;};
+                render(){
+                    return (//리액트에서 리턴할때 <React.Fragment> 태그로 감싸주거나 빈 태그로 감싸 주어야 한다. 
+                        <React.Fragment>
+                            <div>{this.state.first} 곱하기 {this.state.second}는?</div>
+                            <form onSubmit = {this.onSubmit}>
+                                <input ref = {this.onRefInput} type='number' value={this.state.value} onChange = {this.onChange}/>
+                                <button>입력!</button>
+                            </form>
+                            <div>{this.state.result}</div>
+                        </React.Fragment>
+                    );
+                }
+            }
+        </script>
+        <script type='text/babel'>
+            //화면에 반영하는것
+            //위에서 만든 like버튼을 #root에 그린다.
+            ReactDOM.render(<GuGuDan/> , document.querySelector('#root'));
+        </script>
+    </body>
+</html>

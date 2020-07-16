@@ -13,7 +13,7 @@ module.exports = {
         extensions:['.js', '.jsx']
     },
     entry:{//두개의 파일을 합쳐서 만들어 주겠다.
-        app: ['./client'],
+        app: ['./client']
     },//입력
 
     module: { //entry에 있는 파일을 읽어서 모듈을 적용한뒤에 output에 뺀다
@@ -22,12 +22,12 @@ module.exports = {
             loader: 'babel-loader', //로더로 babel-loader를 적용
             options: {//presets 플러그인들의 모음집
                 presets:[ '@babel/preset-env', '@babel/preset-react' ],
-            },
+            }
         }],
     },
 
     output:{//path.join ==> 경로를 합쳐주는 메서드,  __dirname 이게 현재폴더
         path: path.join(__dirname, 'dist'),
-        filename: 'app.js',
+        filename: 'app.js'
     },//출력
 }

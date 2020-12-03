@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "dev",
+			"path": "가위바위보/",
+			"problemMatcher": [],
+			"label": "npm: dev - 가위바위보",
+			"detail": "webpack-dev-server --hot"
+		}
+	]
+}
